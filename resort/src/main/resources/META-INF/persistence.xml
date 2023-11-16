@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="resort-pu" transaction-type="RESOURCE_LOCAL">
+        <class>com.seupacote.suasclasses.entidades.Reserva</class>
+        
+        <!-- Configure a fonte de dados (DataSource) aqui -->
+        <class>java:jboss/datasources/SeuDataSource</class>
+        
+        <properties>
+            <!-- Configurações de banco de dados -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/seubanco"/>
+            <property name="javax.persistence.jdbc.user" value="seuusuario"/>
+            <property name="javax.persistence.jdbc.password" value="suasenha"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            
+            <!-- Configurações de criação de tabelas -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <!-- Use "create" para criar as tabelas (atenção, isso apagará os dados existentes) -->
+            
+            <!-- Configurações de exibição de SQL no console -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
